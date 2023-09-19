@@ -1,0 +1,6 @@
+@use '../../sass/mixin';
+@use '../../sass/variables';
+
+.home-container{
+ background-color: variables.$primary-color;
+}

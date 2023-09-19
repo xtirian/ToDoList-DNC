@@ -1,12 +1,17 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import Home from './assets/Home/home'
+//import bd
+import LISTA_DE_TAREFAS from './mock/bd.mock';
+
+//import components
+
+import Home from './assets/Home/Home'
 
 const Routing = () => {
   const Routes = createBrowserRouter([
     {path: `/`,
-  element: <Home />}
+  element: <Home data={LISTA_DE_TAREFAS} />}
   ])
 
   return (
