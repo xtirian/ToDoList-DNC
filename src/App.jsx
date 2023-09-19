@@ -1,5 +1,5 @@
 import React from "react";
-import { Router } from "./routing";
+import Router from "./Routing";
 
 //utilizar esse mockup como exemplo
 
