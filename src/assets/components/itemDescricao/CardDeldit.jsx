@@ -5,9 +5,10 @@ const CardDeldit = ({
   show,
   handleDelete,
   edit,
-  wantEdit,
   list,
   closeCard,
+  operation,
+  item
 }) => {
   const [card, setCard] = useState();
 
@@ -24,8 +25,8 @@ const CardDeldit = ({
           e.preventDefault();
         }}
       >
-        <h2>Deseja {wantEdit ? "editar" : "deletar"} esse item?</h2>
-        {wantEdit ? (
+        <h2>Deseja {operation ? "editar" : "deletar"} esse item?</h2>
+        {operation ? (
           <label className="confirmation_message" name="confirmation">
             <input
               className="card_form_description"
@@ -35,7 +36,7 @@ const CardDeldit = ({
             />
           </label>
         ) : (
-          {}
+          <p className="delet_message">Confirme que deseja excluir a tarefa: <span>{item}</span></p>
         )}
         <label className="button_grid">
           <button

@@ -58,6 +58,18 @@
   }
 }
 
+.delet_message{
+ @include mixin.bodyS;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ row-gap: 10px;
+
+ span{
+  font-weight: bold;
+ }
+}
+
 .card_form_description {
   color: variables.$primary-color;
   border: none;
