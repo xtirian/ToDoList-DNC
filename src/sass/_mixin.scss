@@ -1,3 +1,5 @@
+@use './variables' as *;
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:ital@1&display=swap');
 
 
@@ -11,6 +13,8 @@ ESTA FONT É PARA O INPUT PLACEHOLDER
  font-size: 4rem;
  line-height: 6rem;
  font-weight: 600;
+
+ color: $pure-white
 
 }
 
