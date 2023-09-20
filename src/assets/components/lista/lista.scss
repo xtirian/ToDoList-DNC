@@ -3,7 +3,8 @@
 
 .lista_container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 table {
   width: min(100%, 685px);
@@ -43,6 +44,10 @@ table {
   .col3 {
     display: inline-block;
     text-align: right;
+
+   display: flex;
+   justify-content: flex-end;
+   gap: 15px;
   }
 
   

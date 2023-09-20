@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-import { IoMdCheckboxOutline } from "react-icons/io";
+import { IoMdCheckboxOutline, IoMdTrash } from "react-icons/io";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
+import { HiMiniPencilSquare } from "react-icons/hi2";
 
 import "./lista.scss";
 import ListForm from "../listForm/ListForm";
+import CardDeldit from "../itemDescricao/CardDeldit";
 
 const Lista = ({ data }) => {
   //carrega a lista do mock
@@ -18,14 +20,34 @@ const Lista = ({ data }) => {
     //esta função será passada como método ao list form onde trato do formulário que recebe a informação
   };
 
+  //altera o status na lista e renderiza a página
   const handleStatus = (status, index) => {
-   //função responsável por pegar o valor do input e setar a lista.  Depois a função irá chamar o setTodos pra renderizar a página com o novo status
+    //função responsável por pegar o valor do input e setar a lista.  Depois a função irá chamar o setTodos pra renderizar a página com o novo status
     toDos[index].completed = status;
 
     setToDos([...toDos]);
   };
 
-  console.log(toDos);
+  //Set the card Edit and del to display it
+  const [card, setCard]  = useState(undefined)
+  const [wantEdit, setWantEdit] = useState(undefined)
+
+  const callCard = (value, edit) => {
+    setCard(value)
+    setWantEdit(edit)
+  }
+
+  //deleta o item da lista e renderiza a página
+
+  const handleDelete = (index) =>{
+    console.log(index)
+  }
+
+  //edita o item da página
+  const handleEdit =(index) => {
+    console.log(index)
+  }
+
   return (
     <div className="lista_container">
       <table>
@@ -36,47 +58,52 @@ const Lista = ({ data }) => {
             <th className="col3">Opções</th>
           </tr>
         </thead>
-        <tbody>          
+        <tbody>
           {toDos.map((item, index) => {
             return (
               <tr key={item.id}>
                 <td className="col1">{item.title}</td>
                 <td className="col2">
-                  {
-                   /* Nesta parte temos um label com o listener onChange que escuta a as mudanças do input checkbox. Dependendo od status do checkbox ele irá chamar a função de handleStatus para corrigir o ícone na tela */}
-                    <label
+                  {/* Nesta parte temos um label com o listener onChange que escuta a as mudanças do input checkbox. Dependendo od status do checkbox ele irá chamar a função de handleStatus para corrigir o ícone na tela */}
+                  <label
                     onChange={(e) => {
-                     handleStatus(e.target.checked, index);
-                   }}
-                    >
-                     {/* Nesta parte adicionei um ternário para verificar se o input deverá ser criado já checkado ou não. Tive dificuldade nessa parte porque estava dando erro no checked quando na verdade eu deveria botar defaultChecked que é o nativo do React */}
-                      {item.completed ? (
-                        <input
-                          type="checkbox"
-                          name={item.title}
-                          style={{ display: "none" }}
-                          id={item.title + item.id + index}
-                          defaultChecked
-                        />
-                      ) : (
-                        <input
-                          type="checkbox"
-                          name={item.title}
-                          style={{ display: "none" }}
-                          id={item.title + item.id + index}
-                        />
-                      )}
+                      handleStatus(e.target.checked, index);
+                    }}
+                  >
+                    {/* Nesta parte adicionei um ternário para verificar se o input deverá ser criado já checkado ou não. Tive dificuldade nessa parte porque estava dando erro no checked quando na verdade eu deveria botar defaultChecked que é o nativo do React */}
+                    {item.completed ? (
+                      <input
+                        type="checkbox"
+                        name={item.title}
+                        style={{ display: "none" }}
+                        id={item.title + item.id + index}
+                        defaultChecked
+                      />
+                    ) : (
+                      <input
+                        type="checkbox"
+                        name={item.title}
+                        style={{ display: "none" }}
+                        id={item.title + item.id + index}
+                      />
+                    )}
 
-                      {/* Esta parte é um if ternário para conferir qual ícone será renderizado. Veja que até agora não tinhamos mudado o ícone, apenas mexido no statuso da tarefa. Aqui é o fim que de fato o ícone correto é mostrado na tela. */}
-                      {item.completed ? (
-                        <IoMdCheckboxOutline />
-                      ) : (
-                        <MdCheckBoxOutlineBlank />
-                      )}
-                    </label>
-                  
+                    {/* Esta parte é um if ternário para conferir qual ícone será renderizado. Veja que até agora não tinhamos mudado o ícone, apenas mexido no statuso da tarefa. Aqui é o fim que de fato o ícone correto é mostrado na tela. */}
+                    {item.completed ? (
+                      <IoMdCheckboxOutline size={30} />
+                    ) : (
+                      <MdCheckBoxOutlineBlank size={30} />
+                    )}
+                  </label>
                 </td>
-                <td className="col3">Delete | Edit</td>
+                <td className="col3">
+                  <button onClick={() => callCard(true, true)}>
+                    <HiMiniPencilSquare size={30} color="white" />
+                  </button>
+                  <button onClick={() => callCard(true, true)}>
+                    <IoMdTrash size={30} color="white" />
+                  </button>
+                </td>
               </tr>
             );
           })}
@@ -85,6 +112,8 @@ const Lista = ({ data }) => {
       </table>
       {/* Nesta etapa eu passo o método criado deste componente para o outro. Eu envio também o toDos.length para dar ao form o tamanho da lista e assim conseguir criar itens com a key ID correta, mas eu poderia passar também uma Todo[Todo.length-1].id que enviaria o valor da key ID caso as IDs tivessem um valor totalmente diferente */}
       <ListForm formHandler={toDoHandler} listLength={toDos.length} />
+
+      <CardDeldit show={card} closeCard={callCard} handleDelete={handleDelete} edit={handleEdit} wantEdit={true} list={toDos}  />
     </div>
   );
 };

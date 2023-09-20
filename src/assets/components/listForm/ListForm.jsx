@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "./listform.scss";
 
+import { AiOutlinePlusSquare } from "react-icons/ai";
+
 const ListForm = ({ formHandler, listLength }) => {
   const [tarefa, setTarefa] = useState(null);
+
+  //esta função tem por objetivo pegar os dados digitados e criar um objeto. Este objeto será pusheado para dentro da lista todos por meio do método formHandler. Por fim o input será limpo
 
   const elementCreate = (value) => {
     const newToDo = {
@@ -13,11 +17,12 @@ const ListForm = ({ formHandler, listLength }) => {
     };
 
     formHandler(newToDo);
+    setTarefa(null)
   };
 
   return (
-    <div>
-      <form
+    <div className="form_container">
+      <form className="listForm"
         onSubmit={(e) => {
           console.log(e.target[0]);
           elementCreate(tarefa);
@@ -32,7 +37,11 @@ const ListForm = ({ formHandler, listLength }) => {
           type="text"
           name="novatarefa"
           onChange={(e) => setTarefa(e.target.value)}
+          required
         />
+        <button>
+          <AiOutlinePlusSquare color="white" size={35} />
+        </button>
       </form>
     </div>
   );
