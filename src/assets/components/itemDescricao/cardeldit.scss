@@ -48,6 +48,8 @@
 
   .button_grid {
     padding-top: 28px;
+    display: flex;
+    gap: 20px;
   }
 }
 
@@ -84,10 +86,25 @@
   width: 256px;
   height: 77px;
   @include mixin.bodyL;
+  border-radius: 10px;
+
+  
 }
 
 .buttonY {
   color: #2d2d2d;
+  border: 1px solid #000;
+
+  &:hover{
+   background-color: #00000011;
+   border: 1px solid #aaa;
+
+  }
+
+  &:active{
+   background-color: #747474;
+   color: white;
+  }
 }
 
 .buttonN {
@@ -100,4 +117,11 @@
   &:active {
     background-color: #0c20ff;
   }
+}
+
+
+.formField-and-confirmation{
+ display: flex;
+ flex-direction: column;
+ row-gap: 57px;
 }

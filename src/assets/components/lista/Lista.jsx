@@ -29,26 +29,30 @@ const Lista = ({ data }) => {
   };
 
   //Set the card Edit and del to display it
-  const [card, setCard]  = useState(undefined)
-  const [itemCalled, setItemCalled] = useState("")
-  const [cardOperation, setCardOperation] = useState(undefined)
+  const [card, setCard] = useState(undefined);
+  const [itemCalled, setItemCalled] = useState(undefined);
+  const [cardOperation, setCardOperation] = useState(undefined);
+  const [idCalled, setIdCalled] = useState(undefined);
 
-  const callCard = (value, edit, item) => {
-    setItemCalled(item)
-    setCard(value)
-    setCardOperation(edit)
-  }
+  const callCard = (value, edit, item, itemIndex) => {
+    setItemCalled(item);
+    setCard(value);
+    setCardOperation(edit);
+    setIdCalled(itemIndex);
+  };
 
   //deleta o item da lista e renderiza a página
 
-  const handleDelete = (index) =>{
-    console.log(index)
-  }
+  const handleDelete = (index) => {
+    let newToDos = toDos.splice(index, 1)
+    
+    console.log(newToDos)
+  };
 
   //edita o item da página
-  const handleEdit =(index) => {
-    console.log(index)
-  }
+  const handleEdit = (index) => {
+    console.log(index);
+  };
 
   return (
     <div className="lista_container">
@@ -63,7 +67,7 @@ const Lista = ({ data }) => {
         <tbody>
           {toDos.map((item, index) => {
             return (
-              <tr key={item.id}>
+              <tr key={item.id+index}>
                 <td className="col1">{item.title}</td>
                 <td className="col2">
                   {/* Nesta parte temos um label com o listener onChange que escuta a as mudanças do input checkbox. Dependendo od status do checkbox ele irá chamar a função de handleStatus para corrigir o ícone na tela */}
@@ -99,10 +103,14 @@ const Lista = ({ data }) => {
                   </label>
                 </td>
                 <td className="col3">
-                  <button onClick={() => callCard(true, true, item.title)}>
+                  <button
+                    onClick={() => callCard(true, true, item.title, index)}
+                  >
                     <HiMiniPencilSquare size={30} color="white" />
                   </button>
-                  <button onClick={() => callCard(true, false, item.title)}>
+                  <button
+                    onClick={() => callCard(true, false, item.title, index)}
+                  >
                     <IoMdTrash size={30} color="white" />
                   </button>
                 </td>
@@ -115,7 +123,15 @@ const Lista = ({ data }) => {
       {/* Nesta etapa eu passo o método criado deste componente para o outro. Eu envio também o toDos.length para dar ao form o tamanho da lista e assim conseguir criar itens com a key ID correta, mas eu poderia passar também uma Todo[Todo.length-1].id que enviaria o valor da key ID caso as IDs tivessem um valor totalmente diferente */}
       <ListForm formHandler={toDoHandler} listLength={toDos.length} />
 
-      <CardDeldit show={card} closeCard={callCard} handleDelete={handleDelete} edit={handleEdit} operation={cardOperation} list={toDos} item={itemCalled}  />
+      <CardDeldit
+        showCard={card}
+        closeCard={callCard}
+        handleDelete={handleDelete}
+        edit={handleEdit}
+        operation={cardOperation}
+        item={itemCalled}
+        itemIndex={idCalled}
+      />
     </div>
   );
 };
