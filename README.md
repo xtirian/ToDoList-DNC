@@ -17,6 +17,9 @@
 
 Aplicação desenvolvida para listar, visualizar, mudar status, editar e apagar itens da lista, com o objetivo de colocar em práticas a biblioteca de desenvolvimento de interfaces React JS. 
 
+- [URL do site para testes](https://to-do-mvyctcrk3-xtirian.vercel.app/)
+
+
 <hr>
 
 <h4>Tecnologias 🚀</h4>
