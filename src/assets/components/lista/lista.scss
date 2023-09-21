@@ -1,0 +1,70 @@
+@use "../../../sass/mixin";
+@use "../../../sass/variables";
+
+.lista_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+table {
+  width: min(100%, 685px);
+
+  tr{
+   display: grid;
+   grid-template-columns: 42.3357664%  37.5182482% auto;   
+  }
+
+  th, td {
+   padding: 0 10px 0 10px;
+  }
+
+  th {
+    @include mixin.bodyL;
+    color: variables.$pure-white;
+    border-bottom: 5px solid #d9d9d9;
+    border-collapse: collapse;
+    padding-bottom: 40px;
+    margin-bottom: 18px;
+  }
+  td{
+   margin-top: 15px;
+   @include mixin.bodyS;
+   color: variables.$pure-white;
+  }
+
+  .col1 {
+    display: inline-block;
+    text-align: left;
+    
+  }
+  .col2 {
+    display: inline-block;
+    text-align: center;
+  }
+  .col3 {
+    display: inline-block;
+    text-align: right;
+
+   display: flex;
+   justify-content: flex-end;
+   gap: 15px;
+  }
+
+  svg:hover{
+    transform: scale(1.5);
+    cursor: pointer;
+    
+  }
+
+  input[type="checkbox"]:checked ~ svg {
+    color: variables.$secondary-color;
+    
+    &path{
+      fill: currentColor;
+
+    }
+  }
+
+  
+  
+}

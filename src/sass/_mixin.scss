@@ -1,0 +1,59 @@
+@use './variables' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:ital@1&display=swap');
+
+
+/*
+
+ESTA FONT É PARA O INPUT PLACEHOLDER
+
+*/
+
+@mixin heading1{
+ font-size: 4rem;
+ line-height: 6rem;
+ font-weight: 600;
+
+ color: $pure-white
+
+}
+
+@mixin heading2{
+
+ font-size: 3.5rem;
+ line-height: 4.109rem;
+
+ font-weight: 600;
+}
+
+@mixin heading3{
+ font-size: 2.5rem;
+ line-height: 3.75rem;
+
+ font-weight: 600;
+}
+
+@mixin bodyL{
+
+ font-size: 3rem;
+ line-height: 3.522rem;
+
+ font-weight: 600;
+}
+
+%bodyS{
+
+ font-size: 2.5rem;
+ line-height: 2.935rem;
+}
+
+@mixin bodyS{
+ @extend %bodyS;
+}
+
+@mixin bodyI {
+ @extend %bodyS;
+ font-family: 'Raleway', sans-serif;
+ font-style: italic;
+
+}

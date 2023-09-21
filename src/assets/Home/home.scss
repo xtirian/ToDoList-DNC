@@ -1,0 +1,17 @@
+@use '../../sass/mixin';
+@use '../../sass/variables';
+
+.home_content-container{
+ padding-top: 218px ; 
+
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ 
+
+ h1{
+  @include mixin.heading1;
+  text-align: center;
+  margin-bottom: 126px;
+ }
+}

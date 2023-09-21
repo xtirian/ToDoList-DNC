@@ -1,0 +1,32 @@
+@use "../../../sass/mixin";
+@use "../../../sass/variables";
+
+header {
+  background-color: variables.$secondary-color;
+
+  display: flex;
+  padding: 20px 0 0 61px;
+}
+
+header div p {
+  @include mixin.heading3;
+  color: variables.$pure-white;
+
+  margin: 0;
+}
+
+header div {
+  padding: 9px 40px;
+
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.active {
+  background-color: variables.$pure-white;
+
+  p {
+   color: variables.$secondary-color;
+  }
+}
