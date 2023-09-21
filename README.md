@@ -2,11 +2,11 @@
 	<h1>Listagem de tarefas</h1>
 	<br>
 	<p align="center">
-		<a href="https://www.linkedin.com/in/felipejsborges/">
-		  <img alt="made by" src="https://img.shields.io/badge/made%20by-Felipe%20Borges-orange">
+		<a href="https://www.linkedin.com/in/mf-cunha/">
+		  <img alt="made by" src="https://img.shields.io/badge/made%20by-xTirian-red">
 		</a>
-		<a href="https://github.com/felipejsborges/pokemon-challenge/commits/master">
-		  <img alt="last commit" src="https://img.shields.io/github/last-commit/felipejsborges/felipejsborges">
+		<a href="https://github.com/xtirian/Frontend-Mentor-SnyderCut/tree/main/art-gallery-website">
+		  <img alt="last commit" src="https://img.shields.io/github/last-commit/xtirian/xtirian">
 		</a>
 	</p>
 </div>
@@ -15,7 +15,7 @@
 
 <h4>Descrição 📄</h4>
 
-Aplicação desenvolvida para listar e visualizar tarefas, com o objetivo de colocar em práticas a biblioteca de desenvolvimento de interfaces React JS.
+Aplicação desenvolvida para listar, visualizar, mudar status, editar e apagar itens da lista, com o objetivo de colocar em práticas a biblioteca de desenvolvimento de interfaces React JS. 
 
 <hr>
 
@@ -26,6 +26,7 @@ Aplicação desenvolvida para listar e visualizar tarefas, com o objetivo de col
 - Vite
 - React Router Dom
 - Sass
+- React- Icons
 - JSON Server
 
 <hr>
@@ -52,17 +53,13 @@ $ npm run dev
 ```
 - [Acesse a aplicação](http://localhost:5173)
 
+- Há 3 tarefas pré-definidas como exemplo que você pode usar para apagar, editar ou mudar o status para testar, além de adicionar suas próprias tarefas. 
+
 <hr>
 
-by Felipe Borges<br>
-<div>
-	<a href="https://www.linkedin.com/in/felipejsborges">
-		<img width="32px" src="https://github.com/felipejsborges/felipejsborges/blob/master/assets/linkedin.svg" alt="LinkedIn">
-	</a>
-	<a href="https://wa.me/+55012996477129">
-		<img width="32px" src="https://github.com/felipejsborges/felipejsborges/blob/master/assets/whatsapp.svg" alt="WhatsApp">
-	</a>
-	<a href="mailto:felipejsborges@outlook.com">
-		<img width="32px" src="https://github.com/felipejsborges/felipejsborges/blob/master/assets/mail.svg" alt="E-mail">
-	</a>
-</div>
+by Matheus Fernandes (aka xTirian)<br>
+
+- Linkedin - [Click here](https://www.linkedin.com/in/mf-cunha/)
+- GitHub - [Click here](https://github.com/xtirian/)
+- FrontEnd Mentor - [Click here](https://www.frontendmentor.io/profile/xtirian)
+- CodePen - [Click Here](https://codepen.io/xtirian/)
