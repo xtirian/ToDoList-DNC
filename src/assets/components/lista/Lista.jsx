@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { IoMdCheckboxOutline, IoMdTrash } from "react-icons/io";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
@@ -8,16 +8,28 @@ import "./lista.scss";
 import ListForm from "../listForm/ListForm";
 import CardDeldit from "../itemDescricao/CardDeldit";
 
-const Lista = ({ data }) => {
+const Lista = ({ data }) => { 
+
+  // FEATURE: LOCAL STORAGE
+  const storedToDoList = JSON.parse(localStorage.getItem('storedToDoList'));
+
   //carrega a lista do mock
-  const [toDos, setToDos] = useState(data);
+  const [toDos, setToDos] = useState(storedToDoList || data);
+
+
+  useEffect(() => {
+    localStorage.setItem('storedToDoList', JSON.stringify(toDos));    
+
+  }, [toDos] )  
+
 
   const toDoHandler = (newToDo) => {
-    setToDos([...toDos, newToDo]);
+    setToDos([...toDos, newToDo]);    
 
     //adiciona à lista atual a lista anterior + a tarefa nova
 
     //esta função será passada como método ao list form onde trato do formulário que recebe a informação
+    
   };
 
   //altera o status na lista e renderiza a página
@@ -45,12 +57,18 @@ const Lista = ({ data }) => {
 
   const handleDelete = (index) => {
     toDos.splice(index, 1);
+
+    setToDos([...toDos]);
   };
 
   //edita o item da página
   const handleEdit = (index, newTitle) => {    
     toDos[index].title = newTitle;
+
+    setToDos([...toDos]);
   };
+
+
 
   return (
     <div className="lista_container">
