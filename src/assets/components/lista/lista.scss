@@ -50,5 +50,21 @@ table {
    gap: 15px;
   }
 
+  svg:hover{
+    transform: scale(1.5);
+    cursor: pointer;
+    
+  }
+
+  input[type="checkbox"]:checked ~ svg {
+    color: variables.$secondary-color;
+    
+    &path{
+      fill: currentColor;
+
+    }
+  }
+
+  
   
 }
