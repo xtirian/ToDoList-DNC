@@ -15,10 +15,9 @@
 
 <h4>Descrição 📄</h4>
 
-Aplicação desenvolvida para listar, visualizar, mudar status, editar e apagar itens da lista, com o objetivo de colocar em práticas a biblioteca de desenvolvimento de interfaces React JS. 
+Aplicação desenvolvida para listar, visualizar, mudar status, editar e apagar itens da lista, com o objetivo de colocar em práticas a biblioteca de desenvolvimento de interfaces React JS.
 
 - [URL do site para testes](https://to-do-mvyctcrk3-xtirian.vercel.app/)
-
 
 <hr>
 
@@ -54,9 +53,10 @@ $ npm run server
 # abra outro terminal e rode o projeto
 $ npm run dev
 ```
+
 - [Acesse a aplicação](http://localhost:5173)
 
-- Há 3 tarefas pré-definidas como exemplo que você pode usar para apagar, editar ou mudar o status para testar, além de adicionar suas próprias tarefas. 
+- Há 3 tarefas pré-definidas como exemplo que você pode usar para apagar, editar ou mudar o status para testar, além de adicionar suas próprias tarefas.
 
 <hr>
 
@@ -66,3 +66,40 @@ by Matheus Fernandes (aka xTirian)<br>
 - GitHub - [Click here](https://github.com/xtirian/)
 - FrontEnd Mentor - [Click here](https://www.frontendmentor.io/profile/xtirian)
 - CodePen - [Click Here](https://codepen.io/xtirian/)
+
+## Atualização 1.1
+
+Para atender à demanda do Júlio, adicionei algumas linhas de código ao programa para, assim, conseguir armazenar os dados no PC das pessoas para utilizar mais tarde.
+A history é a seguinte:
+
+> O usuário deve ser capaz de adicionar uma tarefa ao site e garantir que quando o usuário volte depois ele tenha as tarefas que ele salvou disponíveis para checar.
+
+Para a solução do código, usei a propriedade localStorage() do javaScript e precisaria ser dividido em 3 etapas:
+
+1 - Salvar os dados com o localStorage.setItem() e useEffect
+2 - Pegar os dados com o localStorage.getItem()
+3 - Resolver bugs:
+3.1 - Reset do localStorage quando dava refresh na página.
+
+```jsx
+// 1 - Salvar os dados com o localStorage.setItem() e useEffect
+useEffect(() => {
+  localStorage.setItem("storedToDoList", JSON.stringify(toDos));
+}, [toDos]);
+```
+
+Esta parte foi simples, a única coisa que precisei me atentar ( e descobri no StackOverflow), é que os dados passados ao Local Storage devem ser Strings. Eu poderia passar pelo método .toString(), mas não era a forma mais inteligente. Já que os dados estão estruturados de forma muito parecida com o JSON, usei o método JSON.stringify para transformalo em String. Isto deixa implicito que para receber os intes eu preciso recebê-los com o JSON.parse()
+
+```jsx
+// 2 - Pegar os dados com o localStorage.getItem()
+const Lista = ({ data }) => {
+  const storedToDoList = JSON.parse(localStorage.getItem("storedToDoList"));
+
+  //carrega a lista do mock
+  const [toDos, setToDos] = useState(storedToDoList || data);
+};
+```
+
+Para esta segunda parte eu precisei criar uma ocnstante que recebe o localStorage. Importante ressaltar que eu coloquei ele na primeira linha da função para usá-lo na variável de estado toDos como valor inicial. Assim a pagina quando dá refresh verifica se tem algo salvo e seta no toDos Isto resolve o bug dos refresh que apagava o local storage
+
+

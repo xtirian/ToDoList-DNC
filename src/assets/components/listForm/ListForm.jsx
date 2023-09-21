@@ -13,7 +13,7 @@ const ListForm = ({ formHandler, listLength }) => {
       id: listLength + 1,
       title: value,
       description: "Adicione uma descrição...",
-      complete: false,
+      completed: false,
     };
 
     formHandler(newToDo);
@@ -23,8 +23,7 @@ const ListForm = ({ formHandler, listLength }) => {
   return (
     <div className="form_container">
       <form className="listForm"
-        onSubmit={(e) => {
-          console.log(e.target[0]);
+        onSubmit={(e) => {          
           elementCreate(tarefa);
 
           e.target[0].value = "";
