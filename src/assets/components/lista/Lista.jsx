@@ -44,14 +44,12 @@ const Lista = ({ data }) => {
   //deleta o item da lista e renderiza a página
 
   const handleDelete = (index) => {
-    let newToDos = toDos.splice(index, 1)
-    
-    console.log(newToDos)
+    toDos.splice(index, 1);
   };
 
   //edita o item da página
-  const handleEdit = (index) => {
-    console.log(index);
+  const handleEdit = (index, newTitle) => {    
+    toDos[index].title = newTitle;
   };
 
   return (
@@ -67,7 +65,7 @@ const Lista = ({ data }) => {
         <tbody>
           {toDos.map((item, index) => {
             return (
-              <tr key={item.id+index}>
+              <tr key={item.id + index}>
                 <td className="col1">{item.title}</td>
                 <td className="col2">
                   {/* Nesta parte temos um label com o listener onChange que escuta a as mudanças do input checkbox. Dependendo od status do checkbox ele irá chamar a função de handleStatus para corrigir o ícone na tela */}
