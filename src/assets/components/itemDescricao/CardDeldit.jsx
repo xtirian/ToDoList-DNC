@@ -19,7 +19,7 @@ const CardDeldit = ({
       style={{ display: showCard ? "block" : "none" }}
 
       /*Não consegui pensar melhor jeito para fazer isto. 
-      Basicamente irei verificar o tipo de operação (passada pelo operation. Já que só tem duas opções, optei pelo boolean porque eu gastaria menos linhas pra verificar isso do que se fosse o switch ou um if else)
+      Basicamente irei verificar o tipo de operação (passada pelo operation). Já que só tem duas opções, optei pelo boolean porque eu gastaria menos linhas pra verificar isso do que se fosse o switch ou um if else)
       
       Cada form tem sua característica, o form de editar, você pode realmente editar as tarefas. No form de deletar, além de perguntar se você tem certeza (mecanismo de controle) ele mostra a atividade que você está deletando ao completar aquela ação.*/
     >
